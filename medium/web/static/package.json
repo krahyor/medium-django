@@ -1,0 +1,34 @@
+{
+  "dependencies": {
+    "@enzedonline/quill-blot-formatter2": "^2.3.0",
+    "@highlightjs/cdn-assets": "^11.11.1",
+    "@phosphor-icons/web": "^2.1.1",
+    "@tailwindcss/cli": "^4.0.15",
+    "brython": "^3.12.4",
+    "cally": "^0.8.0",
+    "fireworks-js": "^2.10.8",
+    "fomantic-ui-css": "^2.9.3",
+    "jquery": "^3.7.1",
+    "katex": "^0.16.22",
+    "quill": "^2.0.3",
+    "quill-better-table": "^1.2.10",
+    "quill-image-drop-and-paste": "^2.0.1",
+    "quill-image-resize-module": "^3.0.0",
+    "tailwindcss": "^4.0.15"
+  },
+  "name": "static",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "daisyui": "^5.0.9"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tw": "npx @tailwindcss/cli -i ./css/setup.css -o ./css/app.css",
+    "tw:watch": "npx @tailwindcss/cli -i ./css/setup.css -o ./css/app.css --watch",
+    "tw:minify": "npx @tailwindcss/cli -i ./css/setup.css -o ./css/app.css --minify"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

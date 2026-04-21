@@ -1,0 +1,39 @@
+{% extends "base/base-layout.html" %}
+
+<div class="ui fixed main menu">
+  <a class="launch icon item">
+    <i class="content icon"></i>
+  </a>
+  <div class="item">
+
+    <div class="right menu">
+    
+    </div>
+  </div>
+</div>
+{% block body %}
+
+<script>
+  $(' .ui.dropdown')
+    .dropdown({
+    })
+    ;
+  var dropdown = document.getElementsByClassName("ui item secondary");
+  var i;
+
+  for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
+      } else {
+        dropdownContent.style.display = "block";
+      }
+    });
+  }
+  if (screen.width <= 699) {
+    document.getElementById("content-desktop");
+  }
+</script>
+{% endblock body %}

@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
+  <script type="module" src="{% static 'node_modules/cally/dist/cally.js' %}"></script>
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'node_modules/@phosphor-icons/web/src/regular/style.css' %}">
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'node_modules/@phosphor-icons/web/src/bold/style.css' %}">
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'node_modules/@phosphor-icons/web/src/fill/style.css' %}">
+  {% block default_head %}{% endblock %}
+  {% block additional_head %}{% endblock %}
+
+  <title>
+    {% block title %}
+    Medium Clone
+    {% endblock %}
+  </title>
+</head>
+
+<body>
+  <div class="pusher">
+    {% block body %}{% endblock body %}
+  </div>
+</body>
+
+<style type="text/css">
+  #link:hover {
+    text-decoration: underline;
+  }
+</style>
+{% block additional_js %}{% endblock %}
+
+</html>

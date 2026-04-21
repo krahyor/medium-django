@@ -9,3 +9,9 @@ run server ( รันโปรแกรม )
 ```
 uv run python manage.py runserver
 ```
+
+run migration ( รัน ก่อนใช้งาน )
+```
+ python manage.py migrate medium
+
+ ```
