@@ -1,12 +1,13 @@
 from rest_framework import serializers
-from medium.models import *
-from django.contrib.auth import get_user_model
-from medium.common.utils import is_valid_email
+from rest_framework_simplejwt.state import token_backend
 from rest_framework_simplejwt.serializers import (
     TokenObtainPairSerializer,
     TokenRefreshSerializer,
 )
-from rest_framework_simplejwt.state import token_backend
+
+from django.contrib.auth import get_user_model
+
+from medium.common.utils import is_valid_email
 from medium.models.users import User
 
 
@@ -23,12 +24,15 @@ class RegisterSerializer(serializers.ModelSerializer):
         if data["password"] != data["confirm_password"]:
             raise serializers.ValidationError("password_dont_match")
 
-        data["password"] = data["password"]
-
-        data.pop("password", None)
         data.pop("confirm_password", None)
-
         return data
+
+    def create(self, validated_data):
+        password = validated_data.pop("password")
+        user = get_user_model()(**validated_data)
+        user.set_password(password)
+        user.save()
+        return user
 
     class Meta:
         model = get_user_model()

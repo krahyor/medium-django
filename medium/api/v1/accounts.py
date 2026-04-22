@@ -1,27 +1,30 @@
-from django.core.mail import send_mail
-
 from rest_framework import generics
-from medium.serializers import *
-from medium.common.utils import CustomRenderer
-from rest_framework.renderers import BrowsableAPIRenderer
 from rest_framework.views import APIView
+from rest_framework.renderers import BrowsableAPIRenderer
 from rest_framework.response import Response
 from rest_framework.exceptions import APIException
-from django.conf import settings
 from rest_framework_simplejwt.views import TokenViewBase
 from rest_framework.permissions import IsAuthenticated
 
 
-class AccountRegisterView(generics.CreateAPIView):
-    permission_classes = ()
-
-    serializer_class = RegisterSerializer
-    renderer_classes = [BrowsableAPIRenderer, CustomRenderer]
+from medium.common.utils import CustomRenderer
+from medium.api.serializers.accounts import (
+    ChangePasswordSerializer,
+    RegisterSerializer,
+    LoginSerializer,
+    RefreshTokenSerializer,
+)
 
 
 class AccountLoginView(TokenViewBase):
     serializer_class = LoginSerializer
     renderer_classes = [CustomRenderer, BrowsableAPIRenderer]
+
+
+class AccountRegisterView(generics.CreateAPIView):
+    permission_classes = ()
+    serializer_class = RegisterSerializer
+    renderer_classes = [BrowsableAPIRenderer, CustomRenderer]
 
 
 class AccountRefreshTokenView(TokenViewBase):

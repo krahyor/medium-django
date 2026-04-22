@@ -75,7 +75,7 @@ REST_FRAMEWORK = {
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ["medium/web/templates"],
+        "DIRS": ["medium/web/templates", "medium/api/v1"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

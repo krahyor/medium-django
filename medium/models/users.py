@@ -10,7 +10,7 @@ class User(AbstractUser):
         ("customer", "Customer"),
     )
     name = models.CharField(max_length=120, blank=True)
-    role = models.CharField(choices=userTypes, default="C")
+    role = models.CharField(choices=userTypes, default="customer", max_length=20)
 
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
