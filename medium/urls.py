@@ -22,5 +22,5 @@ urlpatterns = [
     path("", include("medium.web.urls")),
     path("admin/", admin.site.urls),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
-    path("api/docs/", include(("medium.api.api_urls", "medium"), namespace="api")),
+    path("api/", include(("medium.api.urls", "medium"), namespace="api")),
 ]

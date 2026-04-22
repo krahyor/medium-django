@@ -1,7 +1,6 @@
 from django.urls import include, path
 
 
-from medium.api import views
 from medium.web.views import accounts, site
 
 urlpatterns = [

@@ -5,8 +5,13 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "django-cors-headers",
+    "django-filter>=25.2",
     "django>=6.0.4",
+    "djangorestframework-simplejwt>=5.5.1",
     "djangorestframework>=3.17.1",
     "dotenv>=0.9.9",
+    "drf-api-tracking>=1.8.4",
     "drf-yasg>=1.21.15",
+    "rest-framework-simplejwt>=0.0.2",
 ]
