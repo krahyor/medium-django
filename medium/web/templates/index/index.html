@@ -7,6 +7,30 @@
     <dic class="text-2xl">
         สวัสดีครับ
     </dic>
+        <div id="content">
+        </div>
 </div>
+
+<script>
+fetch("/api/v1/blogs/")
+    .then(response => response.json())
+    .then(data => {
+        const blog = document.getElementById("content");
+        data.forEach(item => {
+            const titl_p = document.createElement("p");
+            titl_p.textContent = item.title;
+            const content_p = document.createElement("p");
+            content_p.textContent = item.content;
+            const div_content = document.createElement("div");
+            div_content.classList.add("border", "border-gray-300", "p-4", "mb-4");
+            div_content.appendChild(titl_p);
+            div_content.appendChild(content_p);
+            div_content.addEventListener("click", () => {
+                window.location.href = `/edit_blog/${item.id}/`;
+            });
+            blog.appendChild(div_content);
+        });
+    });
+</script>
 
 {% endblock %}

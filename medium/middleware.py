@@ -28,9 +28,13 @@ class SteinDebugMiddleware:
         return
 
     def process_template_response(self, request, response):
-        response.context_data = {}
-        if settings.DEBUG:
+        if request.path.startswith("/admin/"):
+            return response
 
+        if response.context_data is None:
+            response.context_data = {}
+
+        if settings.DEBUG:
             response.context_data["website_url"] = self.website
 
         return response

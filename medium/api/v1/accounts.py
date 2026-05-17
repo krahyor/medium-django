@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 
 
 from medium.common.utils import CustomRenderer
-from medium.api.serializers.accounts import (
+from medium.serializers.accounts import (
     ChangePasswordSerializer,
     RegisterSerializer,
     LoginSerializer,

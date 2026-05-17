@@ -10,5 +10,6 @@ urlpatterns = [
     path("register/", accounts.AccountRegisterView.as_view()),
     path("login/", TokenObtainPairView.as_view()),
     path("refresh/", TokenRefreshView.as_view()),
-    path("blogs/", blogs.BlogListCreateAPIView.as_view()),
+    path("blogs/", blogs.BlogAPIView.as_view()),
+    path("blogs/<int:pk>/", blogs.BlogUpdateView.as_view()),
 ]
