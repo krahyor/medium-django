@@ -27,3 +27,8 @@ class BlogUpdateView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+
+    def delete(self, request, pk, format=None):
+        blog = Blog.objects.get(pk=pk)
+        blog.delete()
+        return Response("success")

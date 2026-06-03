@@ -6,7 +6,8 @@ from medium.models.blogs import Blog
 
 
 def index(request):
-    return TemplateResponse(request, "index/index.html")
+    blogs = Blog.objects.order_by("-created_date")
+    return TemplateResponse(request, "index/index.html", {"blogs": blogs})
 
 
 def create_blog(request):

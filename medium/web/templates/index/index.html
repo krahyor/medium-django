@@ -1,17 +1,34 @@
 {% extends "base/default-page.html" %}
 
 {% block body %}
-
-
 <div>
-    <dic class="text-2xl">
+    <div class="text-2xl">
         สวัสดีครับ
-    </dic>
+    </div>
+    <div>
+        <a href="/create-blog/" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">สร้างบทความ</a>
+    </div>
+    <div >
         <div id="content">
         </div>
+    </div>
 </div>
 
 <script>
+
+function deleteBlog(event, pk) {
+    event.preventDefault();
+    fetch(`/api/v1/blogs/${pk}/`, {
+        method: "DELETE",
+        headers: {
+            "X-CSRFToken": "{{ csrf_token }}",
+        },
+    })
+        .then(() => {
+            window.location.href = "/";
+        });
+};
+
 fetch("/api/v1/blogs/")
     .then(response => response.json())
     .then(data => {
@@ -22,12 +39,21 @@ fetch("/api/v1/blogs/")
             const content_p = document.createElement("p");
             content_p.textContent = item.content;
             const div_content = document.createElement("div");
+            const edit_blog = document.createElement("a");
+            edit_blog.textContent = "แก้ไขบทความ";
+            edit_blog.href = `/edit_blog/${item.id}/`;
+            edit_blog.classList.add("text-blue-500", "hover:text-blue-700");
+            const delete_blog = document.createElement("p");
+            delete_blog.textContent = "ลบบทความ";
+            delete_blog.classList.add("text-red-500", "hover:text-red-700");
+            delete_blog.addEventListener("click", (event) => {
+                deleteBlog(event, item.id);
+            });
             div_content.classList.add("border", "border-gray-300", "p-4", "mb-4");
             div_content.appendChild(titl_p);
             div_content.appendChild(content_p);
-            div_content.addEventListener("click", () => {
-                window.location.href = `/edit_blog/${item.id}/`;
-            });
+            div_content.appendChild(edit_blog);
+            div_content.appendChild(delete_blog);
             blog.appendChild(div_content);
         });
     });
